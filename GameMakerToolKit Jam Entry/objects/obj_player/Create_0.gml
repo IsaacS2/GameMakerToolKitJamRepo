@@ -1,5 +1,5 @@
 /// @description Player values and functions
-#macro base_horizontal_speed 1
+#macro min_jump 4
 
 // state functions
 func_free_state = function() {
@@ -7,28 +7,26 @@ func_free_state = function() {
 		sprite_index = nextSprite;
 	}
 	if (platformBelow) {
-		if (keyCharge) {  // charging time!
-			sprite_index = spriteCharging;
-			chargeCnt++;
-		} 
+		func_player_charge_check();
 		if (keySlam) {
-			if ((keyRight && right) || (keyLeft && !right)) { 
-				movementSpeed += runSpeed;
-			}
+			nextHandSprite = spriteHandSlamming;
 			if (chargeCnt >= jumpChargeTime) {
+				if ((keyRight && right) || (keyLeft && !right)) { 
+					movementSpeed += runSpeed;
+				}
 				vspd -= jumpHeight;
 			}
-			else {
-				nextSprite = spriteSlamming;
-				state = func_slamming_state;
-			}
 			instance_create_layer(x, y + 8, "Instances", obj_wave_player);
-			slamCnt++;
+			slamRecoverCnt++;
+			slamAttackCnt++;
 			chargeCnt = 0;
 		}
 	}
 	if (vspd != 0 || !platformBelow) {
-		slamCnt = 0;
+		if (slamRecoverCnt <= 0) {
+			nextHandSprite = spriteHandIdle;
+		}
+		slamRecoverCnt = 0;
 		chargeCnt = 0;
 		turningCnt = 0;
 		nextSprite = spriteAir;
@@ -43,7 +41,13 @@ func_turning_state = function() {
 	if (sprite_index != nextSprite) {
 		sprite_index = nextSprite;
 	}
+	func_player_charge_check();
 	turningCnt++;
+	if (keySlam) {  // stop charge
+		chargeCnt = 0;
+		slamRecoverCnt = 0;
+		nextHandSprite = spriteHandIdle;
+	}
 	if (turningCnt >= turningTime) {
 		turningCnt = 0;
 		nextSprite = spriteFree;
@@ -59,44 +63,53 @@ func_in_air_state = function() {
 	func_player_horizontal_check(right, movementSpeed);
 }
 
+/*
 func_slamming_state = function() {
 	if (sprite_index != nextSprite) {
 		sprite_index = nextSprite;
 	}
-	slamCnt++;
-	if (slamCnt >= slamTime) {
-		slamCnt = 0;
+	slamRecoverCnt++;
+	if (slamRecoverCnt >= slamRecoverTime) {
+		slamRecoverCnt = 0;
+		nextHandSprite = spriteHandIdle;
 		state = func_free_state;
 		nextSprite = spriteFree;
 		movementSpeed = base_horizontal_speed;
 	}
 	if (!platformBelow) {
-		slamCnt = 0;
+		slamRecoverCnt = 0;
+		nextHandSprite = spriteHandIdle;
 		nextSprite = spriteAir;
 		state = func_in_air_state;
 		movementSpeed = base_horizontal_speed;
 	} 
 	func_player_horizontal_check(right, movementSpeed);
 }
+*/
 
 // Input values
 keyCharge = false;
 keyLeft = false;
 keyRight = false;
+keySlam = false;
 turningTime = 7;
-slamTime = 15;
-jumpChargeTime = 20;
+slamAttackTime = 8;
+slamRecoverTime = 35;
+jumpChargeTime = 15;
 turningCnt = 0;
-slamCnt = 0;
+slamAttackCnt = 0;
+slamRecoverCnt = 0;
 chargeCnt = 0;
+weightVal = 0;
+speedDrop = 2;
 
 // Player variables
 movementSpeed = base_horizontal_speed;
 runSpeed = 1;  // added onto movementSpeed when holding direction
-jumpHeight = 4;
-dashSpeed = 2;
+jumpHeight = 5;
+powerDashSpeed = 2;
 vspd = 0;
-normalGravityAcceleration = .3;
+normalGravityAcceleration = .2;
 maxGravityPull = 4;
 right = true;
 platformBelow = true;
@@ -109,3 +122,10 @@ spriteCharging = spr_player_charging;
 spriteSlamming = spr_player_slamming;
 nextSprite = spriteFree;
 state = func_free_state;
+
+// hand sprites
+spriteHandIdle = spr_player_hand_idle;
+spriteHandCharging = spr_player_hand_charging;
+spriteHandSlamming = spr_player_hand_slamming;
+spriteHandRecovering = spr_player_hand_recovering;
+nextHandSprite = spriteHandIdle;

@@ -1,2 +1,2 @@
 /// @description Room values
-lastRoom = rm_debug;
+lastRoom = rm_debug_4;

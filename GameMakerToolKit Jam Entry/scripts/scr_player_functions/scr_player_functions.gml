@@ -45,7 +45,12 @@ function func_player_vertical_check() {
 		}
 		y += i;
 		vspd = 0;
-		movementSpeed = base_horizontal_speed;
+		if (global.powerUp == 2) {
+			movementSpeed = base_horizontal_speed + powerDashSpeed;
+		}
+		else {
+			movementSpeed = base_horizontal_speed;
+		}
 		nextSprite = spriteFree;
 		state = func_free_state;
 		exit;
@@ -67,4 +72,17 @@ function func_player_vertical_check() {
 
 function func_player_vertical_movement() {
 	func_player_vertical_check();
+}
+
+function func_player_charge_check() {
+	if (keyCharge) {  // charging time!
+		nextHandSprite = spriteHandCharging;
+		chargeCnt++;
+	}
+}
+
+function func_player_return_to_idle() {
+	nextHandSprite = spriteHandIdle;
+	state = func_free_state;
+	nextSprite = spriteFree;
 }
