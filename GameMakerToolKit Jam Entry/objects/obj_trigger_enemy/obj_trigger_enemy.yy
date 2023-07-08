@@ -1,21 +1,17 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "obj_enemy_normal",
+  "name": "obj_trigger_enemy",
   "eventList": [
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,},
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":1,"eventType":3,"isDnD":false,},
   ],
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "enemies",
-    "path": "folders/Objects/enemies.yy",
+    "name": "triggers",
+    "path": "folders/Objects/triggers.yy",
   },
-  "parentObjectId": {
-    "name": "obj_par_enemy",
-    "path": "objects/obj_par_enemy/obj_par_enemy.yy",
-  },
+  "parentObjectId": null,
   "persistent": false,
   "physicsAngularDamping": 0.1,
   "physicsDensity": 0.5,
@@ -32,9 +28,9 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "spr_enemy_normal",
-    "path": "sprites/spr_enemy_normal/spr_enemy_normal.yy",
+    "name": "spr_trigger_enemy",
+    "path": "sprites/spr_trigger_enemy/spr_trigger_enemy.yy",
   },
   "spriteMaskId": null,
-  "visible": true,
+  "visible": false,
 }

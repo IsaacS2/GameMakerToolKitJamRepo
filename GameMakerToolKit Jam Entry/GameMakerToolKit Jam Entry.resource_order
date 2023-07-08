@@ -22,6 +22,8 @@
     {"name":"powerups","order":4,"path":"folders/Objects/powerups.yy",},
     {"name":"powerups","order":16,"path":"folders/Sprites/powerups.yy",},
     {"name":"enemies","order":7,"path":"folders/Objects/enemies.yy",},
+    {"name":"triggers","order":19,"path":"folders/Sprites/triggers.yy",},
+    {"name":"triggers","order":10,"path":"folders/Objects/triggers.yy",},
   ],
   "ResourceOrderSettings": [
     {"name":"spr_powerup_speed","order":4,"path":"sprites/spr_powerup_speed/spr_powerup_speed.yy",},
@@ -51,6 +53,8 @@
     {"name":"obj_powerup_defense","order":4,"path":"objects/obj_powerup_defense/obj_powerup_defense.yy",},
     {"name":"obj_powerup_normal","order":2,"path":"objects/obj_powerup_normal/obj_powerup_normal.yy",},
     {"name":"rm_debug_2","order":3,"path":"rooms/rm_debug_2/rm_debug_2.yy",},
+    {"name":"rm_debug_5","order":6,"path":"rooms/rm_debug_5/rm_debug_5.yy",},
+    {"name":"obj_trigger_enemy","order":1,"path":"objects/obj_trigger_enemy/obj_trigger_enemy.yy",},
     {"name":"spr_player_turning","order":4,"path":"sprites/spr_player_turning/spr_player_turning.yy",},
     {"name":"rm_debug_4","order":5,"path":"rooms/rm_debug_4/rm_debug_4.yy",},
     {"name":"rm_start_screen","order":1,"path":"rooms/rm_start_screen/rm_start_screen.yy",},
