@@ -34,6 +34,9 @@
     "name": "spr_powerup_speed",
     "path": "sprites/spr_powerup_speed/spr_powerup_speed.yy",
   },
-  "spriteMaskId": null,
+  "spriteMaskId": {
+    "name": "spr_powerup_speed",
+    "path": "sprites/spr_powerup_speed/spr_powerup_speed.yy",
+  },
   "visible": true,
 }

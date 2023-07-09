@@ -25,28 +25,13 @@ else if (slamAttackCnt > 0) {
 	nextHandSprite = spriteHandSlamming;
 	slamAttackCnt++;
 }
-/*
-if (nextHandSprite == spriteHandSlamming) {
-	if (slamAttackCnt >= slamAttackTime) {
-		if (platformBelow && slamRecoverCnt > 0) {
-			nextHandSprite = spriteHandRecovering;
-		} else {
-			nextHandSprite = spriteHandIdle;
-		}
-		slamAttackCnt = 0;
-	} 
-	else {
-		slamAttackCnt++;
-	}
-}
-*/
 
 keyCharge = (keyboard_check(vk_up) || keyboard_check(ord("W")) 
 		|| keyboard_check(vk_down) || keyboard_check(ord("S"))) 
 		&& (slamRecoverCnt <= 0);
-keySlam = (keyboard_check_released(vk_up) || keyboard_check_released(ord("W")) 
+keySlam = ((keyboard_check_released(vk_up) || keyboard_check_released(ord("W")) 
 		|| keyboard_check_released(vk_down) || keyboard_check_released(ord("S"))) 
-		&& (chargeCnt > 0);
+		&& (chargeCnt > 0)) || chargeHold;
 keyLeft = (keyboard_check(vk_left) || keyboard_check(ord("A")));
 keyRight = (keyboard_check(vk_right) || keyboard_check(ord("D")));
 

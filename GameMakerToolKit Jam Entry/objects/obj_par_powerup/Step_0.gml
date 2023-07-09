@@ -2,28 +2,32 @@
 if (!saved && place_meeting(x, y, obj_player)) {
 	saved = true;
 	global.highScore += scoreIncrease;
+	obj_player.powerupsCollected++;
+	if (obj_player.powerupsCollected >= obj_control.powerupsInRoom) {
+		room_goto_next();
+	}
 	depth = 1;
-	if (object_get_name(object_index) == "obj_powerup_normal") {
-		func_add_powerup();
+	if (powerupType == 0) {
+		instance_destroy();
 		exit;
 	}
-	else if (object_get_name(object_index) == "obj_powerup_offense") {
-		global.powerUp = 1;
+	else if (powerupType == 1) {
+		global.powerUp = powerupType;
 		alarm[0] = timeLimit;
 	}
-	else if (object_get_name(object_index) == "obj_powerup_speed") {
+	else if (powerupType == 2) {
 		if (instance_exists(obj_player)) {
 			obj_player.movementSpeed += obj_player.powerDashSpeed;
 		}
-		global.powerUp = 2;
+		global.powerUp = powerupType;
 		alarm[0] = timeLimit;
 	}
-	else if (object_get_name(object_index) == "obj_powerup_defense") {
-		global.powerUp = 3;
+	else if (powerupType == 3) {
+		global.powerUp = powerupType;
 	}
 }
 
 if (saved && instance_exists(obj_player)) {
 	x = obj_player.x;
-	y = obj_player.y - 8;
+	y = obj_player.y - halfHeight;
 }

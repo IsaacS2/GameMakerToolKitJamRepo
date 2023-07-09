@@ -20,6 +20,7 @@ func_free_state = function() {
 			slamRecoverCnt++;
 			slamAttackCnt++;
 			chargeCnt = 0;
+			chargeHold = false;
 		}
 	}
 	if (vspd != 0 || !platformBelow) {
@@ -43,10 +44,8 @@ func_turning_state = function() {
 	}
 	func_player_charge_check();
 	turningCnt++;
-	if (keySlam) {  // stop charge
-		chargeCnt = 0;
-		slamRecoverCnt = 0;
-		nextHandSprite = spriteHandIdle;
+	if (keySlam) {  // hold charge
+		chargeHold = true;
 	}
 	if (turningCnt >= turningTime) {
 		turningCnt = 0;
@@ -59,62 +58,44 @@ func_in_air_state = function() {
 	if (sprite_index != nextSprite) {
 		sprite_index = nextSprite;
 	}
+	if (nextHandSprite == spriteHandRecovering) {
+		nextHandSprite = spriteHandIdle;
+	}
 	func_player_vertical_movement();
 	func_player_horizontal_check(right, movementSpeed);
 }
-
-/*
-func_slamming_state = function() {
-	if (sprite_index != nextSprite) {
-		sprite_index = nextSprite;
-	}
-	slamRecoverCnt++;
-	if (slamRecoverCnt >= slamRecoverTime) {
-		slamRecoverCnt = 0;
-		nextHandSprite = spriteHandIdle;
-		state = func_free_state;
-		nextSprite = spriteFree;
-		movementSpeed = base_horizontal_speed;
-	}
-	if (!platformBelow) {
-		slamRecoverCnt = 0;
-		nextHandSprite = spriteHandIdle;
-		nextSprite = spriteAir;
-		state = func_in_air_state;
-		movementSpeed = base_horizontal_speed;
-	} 
-	func_player_horizontal_check(right, movementSpeed);
-}
-*/
 
 // Input values
 keyCharge = false;
 keyLeft = false;
 keyRight = false;
 keySlam = false;
+chargeHold = false;
 turningTime = 7;
 slamAttackTime = 8;
-slamRecoverTime = 35;
-jumpChargeTime = 15;
+slamRecoverTime = 36;
+jumpChargeTime = 12;
+iFrameTime = 30;
 turningCnt = 0;
 slamAttackCnt = 0;
 slamRecoverCnt = 0;
+iFrameCnt = 0;
 chargeCnt = 0;
 weightVal = 0;
 speedDrop = 2;
+powerupsCollected = 0;
 
 // Player variables
 movementSpeed = base_horizontal_speed;
 runSpeed = 1;  // added onto movementSpeed when holding direction
 jumpHeight = 5;
-powerDashSpeed = 2;
+powerDashSpeed = 1;
 vspd = 0;
 normalGravityAcceleration = .2;
 maxGravityPull = 4;
-right = true;
 platformBelow = true;
-width = 16;
-height = 16;
+width = 12;
+height = 12;
 spriteFree = spr_player_idle;
 spriteAir = spr_player_airborne;
 spriteTurning = spr_player_turning;
@@ -122,6 +103,14 @@ spriteCharging = spr_player_charging;
 spriteSlamming = spr_player_slamming;
 nextSprite = spriteFree;
 state = func_free_state;
+
+right = true;
+if (x > room_width / 2) {
+	right = false;
+}
+else {
+	right = true;
+}
 
 // hand sprites
 spriteHandIdle = spr_player_hand_idle;

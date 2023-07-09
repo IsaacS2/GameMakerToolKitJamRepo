@@ -1,6 +1,11 @@
 function func_player_horizontal_check(_right, _maxDistance) {
 	var i = _maxDistance;
 	if (_right) {
+		/*
+		if (place_meeting(x + i , y, obj_par_block)) {
+			right = !right;
+		}
+		*/
 		while (i > 0) {
 			if (!place_meeting(x + i , y, obj_par_block)) {
 				x += i;
@@ -10,6 +15,11 @@ function func_player_horizontal_check(_right, _maxDistance) {
 		}
 	}
 	else {
+		/*
+		if (place_meeting(x - i , y, obj_par_block)) {
+			right = !right;
+		}
+		*/
 		while (i > 0) {
 			if (!place_meeting(x - i , y, obj_par_block)) {
 				x -= i;
@@ -51,6 +61,7 @@ function func_player_vertical_check() {
 		else {
 			movementSpeed = base_horizontal_speed;
 		}
+		nextHandSprite = spriteHandIdle;
 		nextSprite = spriteFree;
 		state = func_free_state;
 		exit;

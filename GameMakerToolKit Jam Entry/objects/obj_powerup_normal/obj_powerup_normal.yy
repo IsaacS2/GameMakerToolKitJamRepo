@@ -32,6 +32,9 @@
     "name": "spr_powerup_normal",
     "path": "sprites/spr_powerup_normal/spr_powerup_normal.yy",
   },
-  "spriteMaskId": null,
+  "spriteMaskId": {
+    "name": "spr_powerup_normal",
+    "path": "sprites/spr_powerup_normal/spr_powerup_normal.yy",
+  },
   "visible": true,
 }

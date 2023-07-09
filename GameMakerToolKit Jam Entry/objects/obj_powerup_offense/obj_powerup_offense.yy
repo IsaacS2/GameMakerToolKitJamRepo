@@ -35,6 +35,9 @@
     "name": "spr_powerup_offense",
     "path": "sprites/spr_powerup_offense/spr_powerup_offense.yy",
   },
-  "spriteMaskId": null,
+  "spriteMaskId": {
+    "name": "spr_powerup_offense",
+    "path": "sprites/spr_powerup_offense/spr_powerup_offense.yy",
+  },
   "visible": true,
 }

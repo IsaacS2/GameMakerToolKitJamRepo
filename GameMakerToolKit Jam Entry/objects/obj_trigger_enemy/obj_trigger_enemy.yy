@@ -31,6 +31,9 @@
     "name": "spr_trigger_enemy",
     "path": "sprites/spr_trigger_enemy/spr_trigger_enemy.yy",
   },
-  "spriteMaskId": null,
+  "spriteMaskId": {
+    "name": "spr_trigger_enemy",
+    "path": "sprites/spr_trigger_enemy/spr_trigger_enemy.yy",
+  },
   "visible": false,
 }

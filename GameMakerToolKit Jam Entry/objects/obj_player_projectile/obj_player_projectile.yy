@@ -32,6 +32,9 @@
     "name": "spr_player_projectile",
     "path": "sprites/spr_player_projectile/spr_player_projectile.yy",
   },
-  "spriteMaskId": null,
+  "spriteMaskId": {
+    "name": "spr_player_projectile",
+    "path": "sprites/spr_player_projectile/spr_player_projectile.yy",
+  },
   "visible": true,
 }

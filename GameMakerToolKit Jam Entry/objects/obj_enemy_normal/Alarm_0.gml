@@ -1,0 +1,2 @@
+/// @description iFrameReset!
+iFramed = false;

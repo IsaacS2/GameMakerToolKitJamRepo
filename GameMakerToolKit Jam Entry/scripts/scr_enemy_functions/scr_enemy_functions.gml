@@ -1,5 +1,33 @@
+function func_enemy_horizontal_check(_right, _maxDistance) {
+	var i = _maxDistance;
+	if (_right) {
+		if (place_meeting(x + i , y, obj_block_wall) && platformBelow) {
+			right = !right;
+		}
+		while (i > 0) {
+			if (!place_meeting(x + i , y, obj_par_block)) {
+				x += i;
+				exit;
+			}
+			--i;
+		}
+	}
+	else {
+		if (place_meeting(x - i , y, obj_block_wall) && platformBelow) {
+			right = !right;
+		}
+		while (i > 0) {
+			if (!place_meeting(x - i , y, obj_par_block)) {
+				x -= i;
+				exit;
+			}
+			--i;
+		}
+	}
+}
+
 function func_enemy_horizontal_movement(_speed) {
-	func_player_horizontal_check(right, _speed);
+	func_enemy_horizontal_check(right, _speed);
 }
 
 function func_reset_direction_change() {

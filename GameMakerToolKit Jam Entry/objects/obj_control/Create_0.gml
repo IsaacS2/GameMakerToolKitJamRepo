@@ -1,2 +1,3 @@
 /// @description Room values
-lastRoom = rm_debug_5;
+lastRoom = rm_end_screen;
+powerupsInRoom = 0;
