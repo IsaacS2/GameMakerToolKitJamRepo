@@ -17,6 +17,7 @@ else if (object_get_name(object_index) == "obj_powerup_defense") {
 	powerupType = 3;
 }
 
+right = true;
 captured = false;
 saved = false;
 timeLimit = 600;
@@ -24,5 +25,5 @@ projectileTimeLimit = 60;
 projectileCnt = 0;
 weightIncrease = 1;
 scoreIncrease = 1;
-halfHeight = 6;
+topDiff = 10;
 depth = -1;

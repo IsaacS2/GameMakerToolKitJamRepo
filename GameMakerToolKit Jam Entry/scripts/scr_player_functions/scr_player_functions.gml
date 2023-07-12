@@ -87,7 +87,9 @@ function func_player_vertical_movement() {
 
 function func_player_charge_check() {
 	if (keyCharge) {  // charging time!
-		nextHandSprite = spriteHandCharging;
+		if (chargeCnt < jumpChargeTime) {
+			nextHandSprite = spriteHandCharging;
+		}
 		chargeCnt++;
 	}
 }

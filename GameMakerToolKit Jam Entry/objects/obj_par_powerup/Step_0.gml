@@ -29,5 +29,7 @@ if (!saved && place_meeting(x, y, obj_player)) {
 
 if (saved && instance_exists(obj_player)) {
 	x = obj_player.x;
-	y = obj_player.y - halfHeight;
+	y = obj_player.y - topDiff;
+	
+	right = obj_player.right;
 }

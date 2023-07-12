@@ -34,12 +34,12 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "spr_enemy_normal",
-    "path": "sprites/spr_enemy_normal/spr_enemy_normal.yy",
+    "name": "spr_enemy_normal_idle",
+    "path": "sprites/spr_enemy_normal_idle/spr_enemy_normal_idle.yy",
   },
   "spriteMaskId": {
-    "name": "spr_enemy_normal",
-    "path": "sprites/spr_enemy_normal/spr_enemy_normal.yy",
+    "name": "spr_enemy_normal_idle",
+    "path": "sprites/spr_enemy_normal_idle/spr_enemy_normal_idle.yy",
   },
   "visible": true,
 }

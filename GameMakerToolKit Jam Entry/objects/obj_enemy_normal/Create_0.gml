@@ -2,30 +2,34 @@
 
 // enemy states
 func_free_state = function() {
-	if (platformBelow && place_meeting(x, y, obj_wave_player)) {
+	if (sprite_index != nextSprite) {
+		sprite_index = nextSprite;
+	}
+	if (platformBelow && place_meeting(x, y, obj_player_wave)) {
 		if (specialPowerup == 3) {
 			iFramed = true;
 			alarm[0] = iFrameTimer;
-			specialPowerup = 0;
+			specialPowerup = -1;
 			nextHatSprite = spriteHatNormal;
 		}
 		else if (!iFramed) {
 			stunned = true;
+			nextSprite = spriteStunned;
 			state = func_stunned_state;
 			if (powerupsEaten > 0) {
 				projectileCnt = 0;
-				specialPowerup = 0;
+				var _powerupReleased = instance_create_layer(x, y, "Instances", obj_powerup_normal);
 				if (specialPowerup == 0) {
-					instance_create_layer(x, y, "Instances", obj_powerup_normal);
+					_powerupReleased.sprite_index = spr_powerup_normal_dead;
 				}
 				else if (specialPowerup == 1) {
-					instance_create_layer(x, y, "Instances", obj_powerup_normal);
+					_powerupReleased.sprite_index = spr_powerup_offense_dead;
 				}
 				else if (specialPowerup == 2) {
-					instance_create_layer(x, y, "Instances", obj_powerup_normal);
+					_powerupReleased.sprite_index = spr_powerup_speed_dead;
 				}
-				else if (specialPowerup == 3) {
-					instance_create_layer(x, y, "Instances", obj_powerup_normal);
+				else if (specialPowerup == 3 || specialPowerup == -1) {
+					_powerupReleased.sprite_index = spr_powerup_defense_dead;
 				}
 				powerupsEaten--;
 				specialPowerup = 0;
@@ -52,6 +56,7 @@ func_free_state = function() {
 		if (vspd >= 1 && directionChanged) {
 			func_reset_direction_change();
 		}
+		nextSprite = spriteAir;
 	} 
 	if (specialPowerup == 2) {
 		func_enemy_horizontal_movement(movementSpeed + powerDashSpeed);
@@ -62,13 +67,21 @@ func_free_state = function() {
 }
 
 func_in_air_state = function() {
+	if (sprite_index != nextSprite) {
+		sprite_index = nextSprite;
+	}
 	func_enemy_vertical_movement();
 	func_enemy_horizontal_movement(movementSpeed);
 }
 
 func_stunned_state = function() {
+	if (sprite_index != nextSprite) {
+		sprite_index = nextSprite;
+	}
 	stunnedCnt++;
 	if (stunnedCnt >= stunnedTimeLimit) {
+		sprite_index = spriteFree;
+		nextSprite = spriteFree;
 		stunned = false;
 		state = func_free_state;
 		stunnedCnt = 0;
@@ -91,7 +104,7 @@ iFrameTimer = 30;
 playerHeightDiffVal = 20;
 jumpTurnVal = -2;
 stunned = false;
-projectileTimeLimit = 60;
+projectileTimeLimit = 90;
 stunnedTimeLimit = 30;
 projectileCnt = 0;
 stunnedCnt = 0;
@@ -100,6 +113,10 @@ powerupsEaten = 0;
 specialPowerup = 0;
 hatDiff = 13;
 
+spriteFree = spr_enemy_normal_idle;
+spriteAir = spr_enemy_normal_airborne;
+spriteStunned = spr_enemy_normal_stunned;
+nextSprite = spriteFree;
 spriteHatNormal = spr_hat_normal;
 spriteHatOffense = spr_hat_offense;
 spriteHatSpeed = spr_hat_speed;

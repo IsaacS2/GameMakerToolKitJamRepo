@@ -12,8 +12,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Objects",
-    "path": "folders/Objects.yy",
+    "name": "players",
+    "path": "folders/Objects/players.yy",
   },
   "parentObjectId": null,
   "persistent": false,
@@ -35,6 +35,9 @@
     "name": "spr_player_idle",
     "path": "sprites/spr_player_idle/spr_player_idle.yy",
   },
-  "spriteMaskId": null,
+  "spriteMaskId": {
+    "name": "spr_player_idle",
+    "path": "sprites/spr_player_idle/spr_player_idle.yy",
+  },
   "visible": true,
 }

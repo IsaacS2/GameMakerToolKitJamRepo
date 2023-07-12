@@ -45,6 +45,7 @@ function func_enemy_vertical_check() {
 		}
 		y += i;
 		vspd = 0;
+		nextSprite = spriteFree;
 		state = func_free_state;
 		exit;
 	}

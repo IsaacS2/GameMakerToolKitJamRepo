@@ -19,4 +19,6 @@ max_zoom = floor (display_height / ideal_height);
 
 window_set_size(ideal_width, ideal_height);
 
+audio_play_sound(_8_bit_dream_land, 100, true);
+
 room_goto_next();

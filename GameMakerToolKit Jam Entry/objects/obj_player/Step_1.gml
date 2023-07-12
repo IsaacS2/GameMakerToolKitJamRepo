@@ -1,29 +1,37 @@
 /// @description Input values obtained and player moved!
 platformBelow = place_meeting(x, y + 1, obj_par_block);
 
-if (weightVal >= speedDrop) {
-	runSpeed = max(runSpeed - 1, 0);
-	weightVal = 0;
+if (chargeCnt >= jumpChargeTime) {
+	nextHandSprite = spriteHandChargingFull;
 }
-
-if (slamRecoverCnt >= slamRecoverTime) {
-	slamRecoverCnt = 0;
-	nextHandSprite = spriteHandIdle;
-} 
-else if (slamRecoverCnt > 0 && slamAttackCnt <= 0) {
-	nextHandSprite = spriteHandRecovering;
-	slamRecoverCnt++;
-}
-
-if (slamAttackCnt >= slamAttackTime) {
-	slamAttackCnt = 0;
-	if (slamRecoverCnt == 0) {
-		nextHandSprite = spriteHandIdle;
+else {
+	if (weightVal >= speedDrop) {
+		runSpeed = max(runSpeed - 1, 0);
+		if (runSpeed <= 0) {
+			bagSprite = spriteBagFull;
+		}
+		weightVal = 0;
 	}
-}
-else if (slamAttackCnt > 0) {
-	nextHandSprite = spriteHandSlamming;
-	slamAttackCnt++;
+
+	if (slamRecoverCnt >= slamRecoverTime) {
+		slamRecoverCnt = 0;
+		nextHandSprite = spriteHandIdle;
+	} 
+	else if (slamRecoverCnt > 0 && slamAttackCnt <= 0) {
+		nextHandSprite = spriteHandRecovering;
+		slamRecoverCnt++;
+	}
+
+	if (slamAttackCnt >= slamAttackTime) {
+		slamAttackCnt = 0;
+		if (slamRecoverCnt == 0) {
+			nextHandSprite = spriteHandIdle;
+		}
+	}
+	else if (slamAttackCnt > 0) {
+		nextHandSprite = spriteHandSlamming;
+		slamAttackCnt++;
+	}
 }
 
 keyCharge = (keyboard_check(vk_up) || keyboard_check(ord("W")) 

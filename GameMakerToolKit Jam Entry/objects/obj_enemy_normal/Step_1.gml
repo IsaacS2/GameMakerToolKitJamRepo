@@ -28,21 +28,26 @@ else if (triggerTouched && !place_meeting(x, y, obj_trigger_enemy)) {
 if (place_meeting(x, y, obj_par_powerup) && !stunned) {
 	while (place_meeting(x, y, obj_par_powerup)) {
 		var powerup = instance_nearest(x, y, obj_par_powerup);
-		powerupsEaten++;
-		if (powerup.powerupType != 0) {  // special powerup obtained
-			specialPowerup = powerup.powerupType;
-			if (specialPowerup == 1) {
-				nextHatSprite = spriteHatOffense;
+		if (!powerup.saved) {
+			powerupsEaten++;
+			if (powerup.powerupType != 0) {  // special powerup obtained
+				specialPowerup = powerup.powerupType;
+				if (specialPowerup == 1) {
+					nextHatSprite = spriteHatOffense;
+				}
+				else if (specialPowerup == 2) {
+					nextHatSprite = spriteHatSpeed;
+				}
+				else if (specialPowerup == 3) {
+					nextHatSprite = spriteHatDefense;
+				}
 			}
-			else if (specialPowerup == 2) {
-				nextHatSprite = spriteHatSpeed;
-			}
-			else if (specialPowerup == 3) {
-				nextHatSprite = spriteHatDefense;
-			}
+			powerup.captured = true;
+			instance_destroy(powerup);
 		}
-		powerup.captured = true;
-		instance_destroy(powerup);
+		else {
+			break;
+		}
 	}
 }
 

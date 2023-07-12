@@ -5,12 +5,13 @@
   "eventList": [
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,},
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":1,"eventType":3,"isDnD":false,},
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,},
   ],
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Objects",
-    "path": "folders/Objects.yy",
+    "name": "enemies",
+    "path": "folders/Objects/enemies.yy",
   },
   "parentObjectId": null,
   "persistent": false,
@@ -29,12 +30,12 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "spr_player_projectile",
-    "path": "sprites/spr_player_projectile/spr_player_projectile.yy",
+    "name": "spr_enemy_projectile",
+    "path": "sprites/spr_enemy_projectile/spr_enemy_projectile.yy",
   },
   "spriteMaskId": {
-    "name": "spr_player_projectile",
-    "path": "sprites/spr_player_projectile/spr_player_projectile.yy",
+    "name": "spr_enemy_projectile",
+    "path": "sprites/spr_enemy_projectile/spr_enemy_projectile.yy",
   },
   "visible": true,
 }

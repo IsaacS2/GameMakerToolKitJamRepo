@@ -5,5 +5,6 @@ if (!right) {
 else {
 	image_xscale = 1;
 }
+draw_sprite_ext(bagSprite, -1, x, y - 2, image_xscale, 1, 0, c_white, 1);
 draw_self();
 draw_sprite_ext(nextHandSprite, -1, x, y - 2, image_xscale, 1, 0, c_white, 1);

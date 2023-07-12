@@ -16,7 +16,7 @@ func_free_state = function() {
 				}
 				vspd -= jumpHeight;
 			}
-			instance_create_layer(x, y + 8, "Instances", obj_wave_player);
+			instance_create_layer(x, y + 4, "Instances", obj_player_wave);
 			slamRecoverCnt++;
 			slamAttackCnt++;
 			chargeCnt = 0;
@@ -99,8 +99,8 @@ height = 12;
 spriteFree = spr_player_idle;
 spriteAir = spr_player_airborne;
 spriteTurning = spr_player_turning;
-spriteCharging = spr_player_charging;
-spriteSlamming = spr_player_slamming;
+spriteCharging = spr_player_idle;
+spriteSlamming = spr_player_idle;
 nextSprite = spriteFree;
 state = func_free_state;
 
@@ -115,6 +115,12 @@ else {
 // hand sprites
 spriteHandIdle = spr_player_hand_idle;
 spriteHandCharging = spr_player_hand_charging;
+spriteHandChargingFull = spr_player_hand_charging_full;
 spriteHandSlamming = spr_player_hand_slamming;
 spriteHandRecovering = spr_player_hand_recovering;
 nextHandSprite = spriteHandIdle;
+
+// bag sprites
+spriteBagEmpty = spr_sack_empty;
+spriteBagFull = spr_sack_full;
+bagSprite = spriteBagEmpty;
